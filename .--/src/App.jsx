@@ -140,25 +140,29 @@ function App() {
                     TRANSFORMAR A VIDA DE QUEM TRABALHA DURO PARA ALIMENTAR O
                     MUNDO
                   </span>
+<<<<<<< HEAD
                   . <br />
                   <br />
-                </p>
-              </div>
-              <div className="col-12 texto-inferior">
-                <p className="texto-inferior">
-                  NA <span className="texto-verde"> AGROTECH</span>, ACREDITAMOS
-                  QUE O FUTURO DO CAMPO NASCE DA INOVAÇÃO. DESENVOLVEMOS
-                  SOLUÇÕES TECNOLÓGICAS QUE AUMENTAM A PRODUTIVIDADE, REDUZEM
-                  CUSTOS E FACILITAM O DIA A DIA DOS AGRICULTORES. NOSSO
-                  OBJETIVO É TORNAR O TRABALHO NO CAMPO MAIS EFICIENTE,
-                  SUSTENTÁVEL E VALORIZADO, PORQUE QUEM CULTIVA O AMANHÃ MERECE
-                  COLHER O MELHOR.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+=======
+
+>>>>>>> master
+                </p >
+              </div >
+    <div className="col-12 texto-inferior">
+      <p className="texto-inferior">
+        NA <span className="texto-verde"> AGROTECH</span>, ACREDITAMOS
+        QUE O FUTURO DO CAMPO NASCE DA INOVAÇÃO. DESENVOLVEMOS
+        SOLUÇÕES TECNOLÓGICAS QUE AUMENTAM A PRODUTIVIDADE, REDUZEM
+        CUSTOS E FACILITAM O DIA A DIA DOS AGRICULTORES. NOSSO
+        OBJETIVO É TORNAR O TRABALHO NO CAMPO MAIS EFICIENTE,
+        SUSTENTÁVEL E VALORIZADO, PORQUE QUEM CULTIVA O AMANHÃ MERECE
+        COLHER O MELHOR.
+      </p>
+    </div>
+            </div >
+          </div >
+        </div >
+      </section >
 
       <section className="produtos" id="produtos">
         <h1>PRODUTOS</h1>
@@ -202,6 +206,10 @@ function App() {
               <li>App</li>
               <li>Aplicação</li>
               <li>
+            <ul >
+              <li>App</li>
+              <li>Aplicação</li>
+              <li id="acompanha2">
                 Acompanhamento
                 <br />
                 (12 meses)
@@ -227,145 +235,179 @@ function App() {
               src={FotoKevin}
               alt="Foto Kevin"
               className="foto-kevin"
+<<<<<<< HEAD
               style={{ width: "100%", height: 260, objectFit: "cover" }}
             />
             <h3>Kevin Bortoleto</h3>
             <p>(Desenvolvedor)</p>
           </article>
           <article className="card">
-            <img
-              src={FotoRian}
-              alt="Foto Rian"
-              className="foto-rian"
-              style={{ width: "100%", height: 260, objectFit: "cover" }}
+=======
+              style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
-            <h3>Rian Mendonça</h3>
-            <p>(Desenvolvedor)</p>
-          </article>
-          <article className="card">
-            <img
-              src={FotoArthur}
-              alt="Foto Arthur"
-              className="foto-arthur"
-              style={{ width: "100%", height: 260, objectFit: "cover" }}
+          <h3 id="nomekevin"><strong>Kevin Bortoleto</strong></h3>
+          <p><strong>(Desenvolvedor)</strong></p>
+        </article>
+        <article className="card" id="cardrian">
+>>>>>>> master
+          <img
+            src={FotoRian}
+            alt="Foto Rian"
+            className="foto-rian"
+<<<<<<< HEAD
+            style={{ width: "100%", height: 260, objectFit: "cover" }}
+          />
+          <h3>Rian Mendonça</h3>
+          <p>(Desenvolvedor)</p>
+        </article>
+        <article className="card">
+=======
+              style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
-            <h3>Arthur Machado</h3>
-            <p>(Desenvolvedor)</p>
-          </article>
-          <article className="card">
-            <img
-              src={FotoRenato}
-              alt="Foto Renato"
-              className="foto-renato"
-              style={{ width: "100%", height: 260, objectFit: "cover" }}
+          <h3 id="nomerian"><strong>Rian Mendonça</strong></h3>
+          <p><strong>(Desenvolvedor)</strong></p>
+        </article>
+        <article className="card" id="cardarthur">
+>>>>>>> master
+          <img
+            src={FotoArthur}
+            alt="Foto Arthur"
+            className="foto-arthur"
+<<<<<<< HEAD
+            style={{ width: "100%", height: 260, objectFit: "cover" }}
+          />
+          <h3>Arthur Machado</h3>
+          <p>(Desenvolvedor)</p>
+        </article>
+        <article className="card">
+=======
+              style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
-            <h3>Renato Matsumoto</h3>
-            <p>(Desenvolvedor)</p>
-          </article>
-        </div>
-      </section>
+          <h3 id="nomearthur"><strong>Arthur Machado</strong></h3>
+          <p><strong>(Desenvolvedor)</strong></p>
+        </article>
+        <article className="card" id="cardrenato">
+>>>>>>> master
+          <img
+            src={FotoRenato}
+            alt="Foto Renato"
+            className="foto-renato"
+<<<<<<< HEAD
+            style={{ width: "100%", height: 260, objectFit: "cover" }}
+          />
+          <h3>Renato Matsumoto</h3>
+          <p>(Desenvolvedor)</p>
+=======
+              style={{ width: "100%", height: 220, objectFit: "cover" }}
+            />
+          <h3 id="nomerenato"><strong>Renato Matsumoto</strong></h3>
+          <p><strong>(Desenvolvedor)</strong></p>
+>>>>>>> master
+        </article>
+      </div>
+    </section>
 
-      <section className="contato" id="contato">
-        <h1>Contato</h1>
-        <h3>
-          Envie uma mensagem e a gente retorna em breve.{" "}
-          <span className="texto-verde">Vamos conversar?</span>
-        </h3>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSubmitAttempted(true);
-            if (hasErrors) return;
-            // Placeholder: integrate with your backend/email provider.
-            setForm({ nome: "", email: "", mensagem: "" });
-            setSubmitAttempted(false);
-          }}
-          style={{
-            width: "min(720px, 92vw)",
-            display: "grid",
-            gap: 12,
-          }}
-        >
-          <input
-            name="nome"
-            placeholder="Seu nome"
-            value={form.nome}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, nome: e.target.value }))
-            }
-            className={submitAttempted && errors.nome ? "input-error" : ""}
-            style={{ padding: 12, borderRadius: 10, border: "1px solid #333" }}
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Seu email"
-            value={form.email}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, email: e.target.value }))
-            }
-            className={submitAttempted && errors.email ? "input-error" : ""}
-            style={{ padding: 12, borderRadius: 10, border: "1px solid #333" }}
-          />
-          <textarea
-            name="mensagem"
-            placeholder="Sua mensagem"
-            rows={6}
-            value={form.mensagem}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, mensagem: e.target.value }))
-            }
-            className={submitAttempted && errors.mensagem ? "input-error" : ""}
-            style={{ padding: 12, borderRadius: 10, border: "1px solid #333" }}
-          />
-          <button type="submit" className="buttonLearnMore">
-            Enviar
-          </button>
-          <p className="textoPequeno">
-            Ao enviar, voce concorda em ser contatado pela AgroTech.
-          </p>
-        </form>
-      </section>
-
-      <footer
-        className="text-white py-4"
-        style={{ backgroundColor: "#5cab4f" }}
+    <section className="contato" id="contato">
+      <h1>Contato</h1>
+      <h3>
+        Envie uma mensagem e a gente retorna em breve.{" "}
+        <span className="texto-verde">Vamos conversar?</span>
+      </h3>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setSubmitAttempted(true);
+          if (hasErrors) return;
+          // Placeholder: integrate with your backend/email provider.
+          setForm({ nome: "", email: "", mensagem: "" });
+          setSubmitAttempted(false);
+        }}
+        style={{
+          width: "min(720px, 92vw)",
+          display: "grid",
+          gap: 12,
+        }}
       >
-        <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-          <div className="text-start">
-            <p className="mb-1 d-flex align-items-center gap-2">
-              <img
-                src={IconChamadaTelefonica}
-                alt="Telefone"
-                className="footer-icon"
-              />
-              (11) 99760-0907
-            </p>
-            <p className="mb-1 d-flex align-items-center gap-2">
-              <img
-                src={IconInstagram}
-                alt="Instagram"
-                className="footer-icon"
-              />
-              @AGROTECH
-            </p>
-            <p className="mb-0 d-flex align-items-center gap-2">
-              <img src={IconEnvelope} alt="Email" className="footer-icon" />
-              faleconosco@agrotech.com.br
-            </p>
-          </div>
-          <div className="text-center mt-3 mt-md-0">
+        <input
+          name="nome"
+          placeholder="Seu nome"
+          value={form.nome}
+          onChange={(e) =>
+            setForm((prev) => ({ ...prev, nome: e.target.value }))
+          }
+          className={submitAttempted && errors.nome ? "input-error" : ""}
+          style={{ padding: 12, borderRadius: 10, border: "1px solid #333" }}
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Seu email"
+          value={form.email}
+          onChange={(e) =>
+            setForm((prev) => ({ ...prev, email: e.target.value }))
+          }
+          className={submitAttempted && errors.email ? "input-error" : ""}
+          style={{ padding: 12, borderRadius: 10, border: "1px solid #333" }}
+        />
+        <textarea
+          name="mensagem"
+          placeholder="Sua mensagem"
+          rows={6}
+          value={form.mensagem}
+          onChange={(e) =>
+            setForm((prev) => ({ ...prev, mensagem: e.target.value }))
+          }
+          className={submitAttempted && errors.mensagem ? "input-error" : ""}
+          style={{ padding: 12, borderRadius: 10, border: "1px solid #333" }}
+        />
+        <button type="submit" className="buttonLearnMore">
+          Enviar
+        </button>
+        <p className="textoPequeno">
+          Ao enviar, voce concorda em ser contatado pela AgroTech.
+        </p>
+      </form>
+    </section>
+
+    <footer
+      className="text-white py-4"
+      style={{ backgroundColor: "#5cab4f" }}
+    >
+      <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div className="text-start">
+          <p className="mb-1 d-flex align-items-center gap-2">
             <img
-              src={LogoBranco}
-              alt="Logo Agrotech"
-              width="60"
-              className="mb-2"
+              src={IconChamadaTelefonica}
+              alt="Telefone"
+              className="footer-icon"
             />
-            <p className="mb-0 fw-bold">AGROTECH</p>
-            <small>Design by Agrotech</small>
-          </div>
+            (11) 99760-0907
+          </p>
+          <p className="mb-1 d-flex align-items-center gap-2">
+            <img
+              src={IconInstagram}
+              alt="Instagram"
+              className="footer-icon"
+            />
+            @AGROTECH
+          </p>
+          <p className="mb-0 d-flex align-items-center gap-2">
+            <img src={IconEnvelope} alt="Email" className="footer-icon" />
+            faleconosco@agrotech.com.br
+          </p>
         </div>
-      </footer>
+        <div className="text-center mt-3 mt-md-0">
+          <img
+            src={LogoBranco}
+            alt="Logo Agrotech"
+            width="60"
+            className="mb-2"
+          />
+          <p className="mb-0 fw-bold">AGROTECH</p>
+          <small>Design by Agrotech</small>
+        </div>
+      </div>
+    </footer>
     </>
   );
 }
