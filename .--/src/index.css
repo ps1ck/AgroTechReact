@@ -44,6 +44,7 @@ nav {
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-family: "Montserrat", sans-serif;
   padding: 5rem 1rem 2rem;
   position: relative;
   box-sizing: border-box;
@@ -68,11 +69,7 @@ main::after {
   pointer-events: none;
 }
 
-<<<<<<< HEAD
-main > * {
-=======
 main>* {
->>>>>>> master
   position: relative;
   z-index: 1;
 }
@@ -91,17 +88,11 @@ main p {
 h1 strong {
   color: #32cd32;
 }
-<<<<<<< HEAD
-h3 {
-  padding: 10px;
-}
-=======
 
 h3 {
   padding: 10px;
 }
 
->>>>>>> master
 h1 {
   margin-top: 40px;
   margin-bottom: 30px;
@@ -124,18 +115,11 @@ h1 {
 .about-texto {
   display: flex;
   justify-content: center;
-<<<<<<< HEAD
-  text-align: justify;
-  align-items: center;
-  padding-right: 10dvh;
-  padding-left: 10dvh;
-=======
   text-align: left;
   align-items: center;
   padding-right: 10dvh;
   padding-left: 10dvh;
   word-spacing: 8px;
->>>>>>> master
 }
 
 .texto-superior {
@@ -161,14 +145,9 @@ h1 {
   border: none;
   border-radius: 14px;
   padding: 6px 28px;
-<<<<<<< HEAD
-  font-size: 1.1rem;
-  transition: all 0.2s ease-in-out;
-=======
   font-size: 1.3rem;
   transition: all 0.2s ease-in-out;
 
->>>>>>> master
 }
 
 .buttonLearnMore:hover {
@@ -177,12 +156,8 @@ h1 {
 }
 
 .textoPequeno {
-<<<<<<< HEAD
-  font-size: 9pt;
-=======
   font-size: 11px;
   left: 13px;
->>>>>>> master
 }
 
 .cards {
@@ -204,20 +179,12 @@ h1 {
   background: #2e441a;
   border-radius: 15px;
   padding: 30px;
-<<<<<<< HEAD
-  width: 250px;
-=======
   width: 210px;
->>>>>>> master
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
   position: relative;
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 }
 
 .time .card h3 {
@@ -257,29 +224,16 @@ h1 {
 
 .card ul li {
   margin: 8px 0;
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 }
 
 .cards .premium h2 {
   color: #5ce1e6;
-<<<<<<< HEAD
-=======
   margin-top: 20px;
-
->>>>>>> master
 }
 
 .cards .deluxe h2 {
   color: #ffde59;
-<<<<<<< HEAD
-=======
   margin-top: 20px;
-
-
->>>>>>> master
 }
 
 .foto-kevin,
@@ -327,9 +281,6 @@ img.footer-icon {
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
-<<<<<<< HEAD
-=======
-
 
 #acompanha {
   font-size: 15px;
@@ -380,4 +331,3 @@ img.footer-icon {
 #cardarthur {
   right: 20px;
 }
->>>>>>> master
