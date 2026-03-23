@@ -8,6 +8,7 @@ import IconChamadaTelefonica from "./assets/chamada-telefonica.svg";
 import IconEnvelope from "./assets/envelope.svg";
 import IconInstagram from "./assets/instagram.svg";
 import { useMemo, useState } from "react";
+import ComponenteParceiros from "./componentes/ComponenteParceiros";
 
 function App() {
   const [form, setForm] = useState({ nome: "", email: "", mensagem: "" });
@@ -77,6 +78,14 @@ function App() {
             </li>
             <li>
               <a
+                href="#sejanossoparceiro"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Seja Nosso Parceiro
+              </a>
+            </li>
+            <li>
+              <a
                 href="#time"
                 style={{ color: "white", textDecoration: "none" }}
               >
@@ -140,13 +149,7 @@ function App() {
                     TRANSFORMAR A VIDA DE QUEM TRABALHA DURO PARA ALIMENTAR O
                     MUNDO
                   </span>
-<<<<<<< HEAD
-                  . <br />
-                  <br />
-=======
-
->>>>>>> master
-                </p >
+                </p>
               </div >
     <div className="col-12 texto-inferior">
       <p className="texto-inferior">
@@ -205,8 +208,8 @@ function App() {
             <ul>
               <li>App</li>
               <li>Aplicação</li>
-              <li>
-            <ul >
+            </ul>
+            <ul>
               <li>App</li>
               <li>Aplicação</li>
               <li id="acompanha2">
@@ -227,6 +230,8 @@ function App() {
         </div>
       </section>
 
+      <ComponenteParceiros />
+
       <section className="time" id="time">
         <h1>TIME</h1>
         <div className="cards" id="cargos">
@@ -235,74 +240,40 @@ function App() {
               src={FotoKevin}
               alt="Foto Kevin"
               className="foto-kevin"
-<<<<<<< HEAD
-              style={{ width: "100%", height: 260, objectFit: "cover" }}
-            />
-            <h3>Kevin Bortoleto</h3>
-            <p>(Desenvolvedor)</p>
-          </article>
-          <article className="card">
-=======
               style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
           <h3 id="nomekevin"><strong>Kevin Bortoleto</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
         </article>
         <article className="card" id="cardrian">
->>>>>>> master
           <img
             src={FotoRian}
             alt="Foto Rian"
             className="foto-rian"
-<<<<<<< HEAD
-            style={{ width: "100%", height: 260, objectFit: "cover" }}
-          />
-          <h3>Rian Mendonça</h3>
-          <p>(Desenvolvedor)</p>
-        </article>
-        <article className="card">
-=======
-              style={{ width: "100%", height: 220, objectFit: "cover" }}
+            style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
           <h3 id="nomerian"><strong>Rian Mendonça</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
         </article>
         <article className="card" id="cardarthur">
->>>>>>> master
           <img
             src={FotoArthur}
             alt="Foto Arthur"
             className="foto-arthur"
-<<<<<<< HEAD
-            style={{ width: "100%", height: 260, objectFit: "cover" }}
-          />
-          <h3>Arthur Machado</h3>
-          <p>(Desenvolvedor)</p>
-        </article>
-        <article className="card">
-=======
-              style={{ width: "100%", height: 220, objectFit: "cover" }}
+            style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
           <h3 id="nomearthur"><strong>Arthur Machado</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
         </article>
         <article className="card" id="cardrenato">
->>>>>>> master
           <img
             src={FotoRenato}
             alt="Foto Renato"
             className="foto-renato"
-<<<<<<< HEAD
-            style={{ width: "100%", height: 260, objectFit: "cover" }}
-          />
-          <h3>Renato Matsumoto</h3>
-          <p>(Desenvolvedor)</p>
-=======
-              style={{ width: "100%", height: 220, objectFit: "cover" }}
+            style={{ width: "100%", height: 220, objectFit: "cover" }}
             />
           <h3 id="nomerenato"><strong>Renato Matsumoto</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
->>>>>>> master
         </article>
       </div>
     </section>
