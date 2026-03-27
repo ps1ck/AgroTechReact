@@ -33,6 +33,18 @@ nav {
   border-bottom: 2px solid #32cd32 !important;
 }
 
+@media (max-width: 860px) {
+  nav {
+    padding: 0.5rem 1rem !important;
+  }
+
+  .buttonsHome {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: flex-end;
+  }
+}
+
 .main {
   background-image: url("./assets/img-fundo.png");
   background-size: cover;
@@ -122,6 +134,27 @@ h1 {
   word-spacing: 8px;
 }
 
+@media (max-width: 900px) {
+  .about-texto {
+    padding-left: 24px;
+    padding-right: 24px;
+    word-spacing: normal;
+  }
+
+  .about,
+  .produtos,
+  .time,
+  .contato,
+  .mural {
+    min-height: auto;
+    padding: 60px 16px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+}
+
 .texto-superior {
   font-size: 30px;
 }
@@ -161,10 +194,22 @@ h1 {
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
   justify-content: center;
-  gap: 10dvw;
+}
+
+.time .cards {
+  width: min(1320px, 92vw);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+@media (min-width: 1200px) {
+  .time .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .cards .card h2 {
@@ -178,13 +223,32 @@ h1 {
 .card {
   background: #2e441a;
   border-radius: 15px;
-  padding: 30px;
-  width: 210px;
+  padding: 28px;
+  width: 100%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.time .card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.time .card {
+  min-height: 520px;
+}
+
+.produtos .card {
+  min-height: 420px;
 }
 
 .time .card h3 {
@@ -200,8 +264,9 @@ h1 {
 }
 
 .alinhaTudo {
-  position: absolute;
-  bottom: 20px;
+  position: static;
+  margin-top: auto;
+  align-self: center;
 }
 
 .card:hover {
@@ -218,7 +283,7 @@ h1 {
 
 .card ul {
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   text-align: left;
 }
 
@@ -246,7 +311,8 @@ h1 {
 .about,
 .produtos,
 .time,
-.contato {
+.contato,
+.mural {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -255,6 +321,127 @@ h1 {
   align-items: center;
   justify-content: space-around;
   min-height: 95vh;
+}
+
+.mural-grid {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .mural-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mural-form {
+  background: rgba(46, 68, 26, 0.35);
+  border: 1px solid rgba(50, 205, 50, 0.25);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.mural-label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.mural-form input,
+.mural-form textarea {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  outline: none;
+}
+
+.mural-form input::placeholder,
+.mural-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.mural-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .mural-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mural-hint {
+  font-size: 12px;
+  opacity: 0.95;
+  color: #ffd1d1;
+}
+
+.mural-list {
+  display: grid;
+  gap: 12px;
+}
+
+.mural-empty {
+  background: rgba(27, 31, 19, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.mural-card {
+  background: rgba(27, 31, 19, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.mural-card h2 {
+  margin: 0 0 10px;
+  color: #eaffea;
+}
+
+.mural-problema {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+.mural-contatos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.mural-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(50, 205, 50, 0.35);
+  color: white;
+  text-decoration: none;
+  background: rgba(50, 205, 50, 0.12);
+}
+
+.mural-link:hover {
+  background: rgba(50, 205, 50, 0.2);
+}
+
+.mural-meta {
+  opacity: 0.75;
 }
 
 .input-error {
@@ -317,17 +504,27 @@ img.footer-icon {
 }
 
 #cardkevin {
-  left: 60px;
+  left: 0;
 }
 
 #cardrenato {
-  right: 60px;
+  right: 0;
 }
 
 #cardrian {
-  left: 20px;
+  left: 0;
 }
 
 #cardarthur {
-  right: 20px;
+  right: 0;
+}
+
+@media (max-width: 1100px) {
+  #cardkevin,
+  #cardrenato,
+  #cardrian,
+  #cardarthur {
+    left: 0;
+    right: 0;
+  }
 }

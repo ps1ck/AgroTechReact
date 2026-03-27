@@ -9,6 +9,7 @@ import IconEnvelope from "./assets/envelope.svg";
 import IconInstagram from "./assets/instagram.svg";
 import { useMemo, useState } from "react";
 import ComponenteParceiros from "./componentes/ComponenteParceiros";
+import MuralDeAjuda from "./componentes/MuralDeAjuda";
 
 function App() {
   const [form, setForm] = useState({ nome: "", email: "", mensagem: "" });
@@ -90,6 +91,14 @@ function App() {
                 style={{ color: "white", textDecoration: "none" }}
               >
                 Time
+              </a>
+            </li>
+            <li>
+              <a
+                href="#mural"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Mural de Ajuda
               </a>
             </li>
             <li>
@@ -232,6 +241,8 @@ function App() {
 
       <ComponenteParceiros />
 
+      <MuralDeAjuda />
+
       <section className="time" id="time">
         <h1>TIME</h1>
         <div className="cards" id="cargos">
@@ -240,7 +251,7 @@ function App() {
               src={FotoKevin}
               alt="Foto Kevin"
               className="foto-kevin"
-              style={{ width: "100%", height: 220, objectFit: "cover" }}
+              style={{ width: "100%" }}
             />
           <h3 id="nomekevin"><strong>Kevin Bortoleto</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
@@ -250,7 +261,7 @@ function App() {
             src={FotoRian}
             alt="Foto Rian"
             className="foto-rian"
-            style={{ width: "100%", height: 220, objectFit: "cover" }}
+            style={{ width: "100%" }}
             />
           <h3 id="nomerian"><strong>Rian Mendonça</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
@@ -260,7 +271,7 @@ function App() {
             src={FotoArthur}
             alt="Foto Arthur"
             className="foto-arthur"
-            style={{ width: "100%", height: 220, objectFit: "cover" }}
+            style={{ width: "100%" }}
             />
           <h3 id="nomearthur"><strong>Arthur Machado</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>
@@ -270,7 +281,7 @@ function App() {
             src={FotoRenato}
             alt="Foto Renato"
             className="foto-renato"
-            style={{ width: "100%", height: 220, objectFit: "cover" }}
+            style={{ width: "100%" }}
             />
           <h3 id="nomerenato"><strong>Renato Matsumoto</strong></h3>
           <p><strong>(Desenvolvedor)</strong></p>

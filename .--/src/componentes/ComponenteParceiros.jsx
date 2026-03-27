@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const parceirosExistentes = [
   {
@@ -57,23 +57,25 @@ const styles = {
     maxWidth: "1100px",
     margin: "0 auto",
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
+    gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))",
     gap: "48px",
     alignItems: "start",
   },
   columnTitle: {
-    color: "#7ab648",
+    color: "#69b845",
     fontSize: "clamp(1.4rem, 3vw, 2rem)",
     fontWeight: 900,
     letterSpacing: "0.08em",
     textTransform: "uppercase",
     marginBottom: "24px",
-    textAlign: "center"
+    textAlign: "center",
   },
   card: {
-    background: "#fff",
+    background: "rgba(46, 68, 26, 0.35)",
+    border: "1px solid rgba(50, 205, 50, 0.25)",
     borderRadius: "20px",
     padding: "32px",
+    color: "white",
   },
   fieldGroup: {
     marginBottom: "8px",
@@ -81,21 +83,21 @@ const styles = {
   label: {
     display: "block",
     fontSize: "0.85rem",
-    color: "#333",
+    color: "rgba(255, 255, 255, 0.9)",
     marginBottom: "6px",
     fontWeight: 600,
   },
   input: {
     width: "100%",
-    background: "#c8dba5",
-    border: "none",
-    borderRadius: "50px",
+    background: "rgba(0, 0, 0, 0.25)",
+    border: "1px solid #333",
+    borderRadius: "12px",
     padding: "12px 18px",
     fontSize: "0.9rem",
-    color: "#333",
+    color: "white",
     outline: "none",
     boxSizing: "border-box",
-    transition: "box-shadow 0.2s",
+    transition: "box-shadow 0.2s, border-color 0.2s",
   },
   row: {
     display: "grid",
@@ -105,11 +107,11 @@ const styles = {
   submitBtn: {
     display: "block",
     margin: "28px auto 0",
-    background: "#4a8c1c",
+    background: "#32cd32",
     color: "#fff",
     border: "none",
-    borderRadius: "50px",
-    padding: "14px 40px",
+    borderRadius: "14px",
+    padding: "12px 34px",
     fontSize: "1rem",
     fontWeight: 700,
     cursor: "pointer",
@@ -118,9 +120,10 @@ const styles = {
   searchWrapper: {
     display: "flex",
     alignItems: "center",
-    background: "#c8dba5",
-    borderRadius: "50px",
-    padding: "10px 18px",
+    background: "rgba(0, 0, 0, 0.25)",
+    border: "1px solid #333",
+    borderRadius: "12px",
+    padding: "10px 12px",
     marginBottom: "20px",
     gap: "8px",
   },
@@ -129,16 +132,17 @@ const styles = {
     border: "none",
     background: "transparent",
     fontSize: "0.95rem",
-    color: "#444",
+    color: "white",
     outline: "none",
   },
   searchIcon: {
-    color: "#555",
+    color: "rgba(255, 255, 255, 0.75)",
     fontSize: "1.1rem",
     cursor: "pointer",
   },
   listWrapper: {
-    background: "#fff",
+    background: "rgba(46, 68, 26, 0.18)",
+    border: "1px solid rgba(255, 255, 255, 0.08)",
     borderRadius: "20px",
     padding: "20px",
     maxHeight: "480px",
@@ -148,7 +152,8 @@ const styles = {
     gap: "12px",
   },
   partnerCard: {
-    background: "#c8dba5",
+    background: "rgba(27, 31, 19, 0.9)",
+    border: "1px solid rgba(255, 255, 255, 0.08)",
     borderRadius: "14px",
     padding: "16px 18px",
     display: "flex",
@@ -161,20 +166,20 @@ const styles = {
   partnerName: {
     fontWeight: 800,
     fontSize: "1rem",
-    color: "#1a1a1a",
+    color: "#eaffea",
     marginBottom: "4px",
   },
   partnerMeta: {
     fontSize: "0.8rem",
-    color: "#444",
+    color: "#b7f7b7",
     lineHeight: "1.6",
   },
   visitBtn: {
-    background: "#4a8c1c",
-    color: "#fff",
-    border: "none",
-    borderRadius: "50px",
-    padding: "10px 22px",
+    background: "rgba(50, 205, 50, 0.12)",
+    color: "white",
+    border: "1px solid rgba(50, 205, 50, 0.35)",
+    borderRadius: "999px",
+    padding: "10px 18px",
     fontSize: "0.85rem",
     fontWeight: 700,
     cursor: "pointer",
@@ -186,18 +191,34 @@ const styles = {
   },
   emptyMsg: {
     textAlign: "center",
-    color: "#888",
+    color: "rgba(255, 255, 255, 0.7)",
     padding: "32px 0",
     fontSize: "0.9rem",
   },
   successMsg: {
     textAlign: "center",
-    color: "#4a8c1c",
+    color: "#32cd32",
     fontWeight: 700,
     marginTop: "16px",
     fontSize: "0.95rem",
   },
 };
+
+function digitsOnly(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function isValidUf(value) {
+  return /^[A-Z]{2}$/.test(
+    String(value || "")
+      .trim()
+      .toUpperCase(),
+  );
+}
 
 function PartnerForm({ onSubmitSuccess }) {
   const [form, setForm] = useState({
@@ -210,29 +231,86 @@ function PartnerForm({ onSubmitSuccess }) {
     telefone: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   const handleChange = (e) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+    const { name, value } = e.target;
 
-  const handleSubmit = () => {
-    const required = ["nome", "cnpj", "cidade", "estado", "servico", "email"];
-    if (required.some((f) => !form[f].trim())) {
-      alert("Por favor, preencha todos os campos obrigatórios.");
+    if (name === "cnpj") {
+      setForm((prev) => ({ ...prev, cnpj: digitsOnly(value).slice(0, 14) }));
       return;
     }
+
+    if (name === "estado") {
+      const letters = String(value || "")
+        .replace(/[^a-zA-Z]/g, "")
+        .toUpperCase()
+        .slice(0, 2);
+      setForm((prev) => ({ ...prev, estado: letters }));
+      return;
+    }
+
+    if (name === "telefone") {
+      setForm((prev) => ({
+        ...prev,
+        telefone: digitsOnly(value).slice(0, 15),
+      }));
+      return;
+    }
+
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const errors = useMemo(() => {
+    const nome = !form.nome.trim();
+    const cnpj = digitsOnly(form.cnpj).length !== 14;
+    const cidade = !form.cidade.trim();
+    const estado = !isValidUf(form.estado);
+    const servico = !form.servico.trim();
+    const email = !isValidEmail(form.email);
+
+    const telefoneDigits = digitsOnly(form.telefone);
+    const telefone =
+      telefoneDigits.length > 0 &&
+      (telefoneDigits.length < 10 || telefoneDigits.length > 15);
+
+    return { nome, cnpj, cidade, estado, servico, email, telefone };
+  }, [form]);
+
+  const hasErrors =
+    errors.nome ||
+    errors.cnpj ||
+    errors.cidade ||
+    errors.estado ||
+    errors.servico ||
+    errors.email ||
+    errors.telefone;
+
+  const handleSubmit = () => {
+    setSubmitAttempted(true);
+    if (hasErrors) return;
     onSubmitSuccess && onSubmitSuccess(form);
     setSubmitted(true);
-    setForm({ nome: "", cnpj: "", cidade: "", estado: "", servico: "", email: "", telefone: "" });
+    setSubmitAttempted(false);
+    setForm({
+      nome: "",
+      cnpj: "",
+      cidade: "",
+      estado: "",
+      servico: "",
+      email: "",
+      telefone: "",
+    });
     setTimeout(() => setSubmitted(false), 4000);
   };
 
-  const inputFocus = (e) => (e.target.style.boxShadow = "0 0 0 3px rgba(74,140,28,0.3)");
+  const inputFocus = (e) =>
+    (e.target.style.boxShadow = "0 0 0 3px rgba(50, 205, 50, 0.25)");
   const inputBlur = (e) => (e.target.style.boxShadow = "none");
 
   return (
     <div style={styles.card}>
-      {(["nome", "cnpj"] ).map((field) => (
+      {["nome", "cnpj"].map((field) => (
         <div key={field} style={styles.fieldGroup}>
           <label style={styles.label}>
             {field === "nome" ? "Nome da empresa" : "CNPJ"}
@@ -243,8 +321,12 @@ function PartnerForm({ onSubmitSuccess }) {
             onChange={handleChange}
             onFocus={inputFocus}
             onBlur={inputBlur}
-            style={styles.input}
-            autoComplete="off"
+            style={{
+              ...styles.input,
+              borderColor:
+                submitAttempted && errors[field] ? "#ff3b3b" : "transparent",
+            }}
+            autoComplete="on"
           />
         </div>
       ))}
@@ -259,7 +341,11 @@ function PartnerForm({ onSubmitSuccess }) {
               onChange={handleChange}
               onFocus={inputFocus}
               onBlur={inputBlur}
-              style={styles.input}
+              style={{
+                ...styles.input,
+                borderColor:
+                  submitAttempted && errors.cidade ? "#ff3b3b" : "transparent",
+              }}
             />
           </div>
           <div>
@@ -270,7 +356,11 @@ function PartnerForm({ onSubmitSuccess }) {
               onChange={handleChange}
               onFocus={inputFocus}
               onBlur={inputBlur}
-              style={styles.input}
+              style={{
+                ...styles.input,
+                borderColor:
+                  submitAttempted && errors.estado ? "#ff3b3b" : "transparent",
+              }}
             />
           </div>
         </div>
@@ -279,7 +369,9 @@ function PartnerForm({ onSubmitSuccess }) {
       {["servico", "email", "telefone"].map((field) => (
         <div key={field} style={styles.fieldGroup}>
           <label style={styles.label}>
-            {field === "servico" ? "Tipo de serviço" : field.charAt(0).toUpperCase() + field.slice(1)}
+            {field === "servico"
+              ? "Tipo de serviço"
+              : field.charAt(0).toUpperCase() + field.slice(1)}
           </label>
           <input
             name={field}
@@ -287,7 +379,11 @@ function PartnerForm({ onSubmitSuccess }) {
             onChange={handleChange}
             onFocus={inputFocus}
             onBlur={inputBlur}
-            style={styles.input}
+            style={{
+              ...styles.input,
+              borderColor:
+                submitAttempted && errors[field] ? "#ff3b3b" : "transparent",
+            }}
             type={field === "email" ? "email" : "text"}
           />
         </div>
@@ -296,8 +392,8 @@ function PartnerForm({ onSubmitSuccess }) {
       <button
         style={styles.submitBtn}
         onClick={handleSubmit}
-        onMouseEnter={(e) => (e.target.style.background = "#3a7015")}
-        onMouseLeave={(e) => (e.target.style.background = "#4a8c1c")}
+        onMouseEnter={(e) => (e.target.style.background = "#075328")}
+        onMouseLeave={(e) => (e.target.style.background = "#32cd32")}
       >
         Quero me tornar parceiro
       </button>
@@ -351,8 +447,12 @@ function PartnerList({ partners }) {
               <a
                 href={p.url}
                 style={styles.visitBtn}
-                onMouseEnter={(e) => (e.target.style.background = "#3a7015")}
-                onMouseLeave={(e) => (e.target.style.background = "#4a8c1c")}
+                onMouseEnter={(e) =>
+                  (e.target.style.background = "rgba(50, 205, 50, 0.2)")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.background = "rgba(50, 205, 50, 0.12)")
+                }
               >
                 Visitar
               </a>
